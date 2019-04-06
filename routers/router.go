@@ -24,7 +24,7 @@ func init() {
 
 		boot.App.GeoIP = geoip.InitGeoIP(context)
 
-		boot.App.Validator = validators.InitUniversalValidator(boot.App.Locale.Lang, boot.App.Validator)
+		boot.App.Validator = validators.InitUniversalValidator(boot.App.Locale.Lang)
 	})
 
 	ns := beego.NewNamespace("/v1",
