@@ -28,11 +28,13 @@ func (m *Model) TableName() string {
 }
 
 func FindAll() (users []Model, err error) {
-	_, err = qs.All(&users)
+	cols := mysql.GetCols(&Model{}, "IsRoot")
+	_, err = qs.All(&users, cols...)
 	return
 }
 
 func FindOneById(id int) (user Model, err error) {
-	err = qs.Filter("id", id).One(&user)
+	cols := mysql.GetCols(&Model{}, "IsRoot")
+	err = qs.Filter("id", id).One(&user, cols...)
 	return
 }
