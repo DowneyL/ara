@@ -9,6 +9,8 @@ import (
 	entrans "gopkg.in/go-playground/validator.v9/translations/en"
 	jatrans "gopkg.in/go-playground/validator.v9/translations/ja"
 	zhtrans "gopkg.in/go-playground/validator.v9/translations/zh"
+	"reflect"
+	"strings"
 )
 
 var (
@@ -23,6 +25,22 @@ type UniversalValidator struct {
 
 func InitValidate() UniversalValidator {
 	Validator.Validate = validator.New()
+
+	// 验证器字段根据标签 form 或者 json 的名字定
+	Validator.Validate.RegisterTagNameFunc(func(fld reflect.StructField) string {
+		getFieldName := func(str string) string {
+			return strings.SplitN(fld.Tag.Get(str), ",", 2)[0]
+		}
+		name := getFieldName("json")
+		if name == "" {
+			name = getFieldName("form")
+		}
+		if name == "-" {
+			return ""
+		}
+		return name
+	})
+
 	return Validator
 }
 

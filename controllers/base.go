@@ -70,6 +70,11 @@ func (base *BaseController) InvalidArgumentJSON() {
 	base.returnJson()
 }
 
+func (base *BaseController) SystemErrorJSON() {
+	base.Data["json"] = base.SystemError()
+	base.returnJson()
+}
+
 func (base *BaseController) Valid(obj interface{}) {
 	valid := boot.GetValidator()
 	if err := valid.Validate.Struct(obj); err != nil {
