@@ -15,6 +15,6 @@ func GetCols(model interface{}, exceptedCols ...string) []string {
 			}
 		}
 	}
-	
+
 	return cols
 }

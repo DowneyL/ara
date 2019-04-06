@@ -15,11 +15,10 @@ func GetFieldName(structName interface{}) []string {
 		return *new([]string)
 	}
 	fieldNum := t.NumField()
-	result := make([]string,0,fieldNum)
-	for i:= 0;i<fieldNum;i++ {
-		result = append(result,t.Field(i).Name)
+	result := make([]string, 0, fieldNum)
+	for i := 0; i < fieldNum; i++ {
+		result = append(result, t.Field(i).Name)
 	}
 
 	return result
 }
-
