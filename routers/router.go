@@ -24,11 +24,13 @@ func init() {
 
 		boot.App.GeoIP = geoip.InitGeoIP(context)
 
-		boot.App.Validator = validators.InitUniversalValidator(boot.App.Locale.Lang, boot.App.Validator)
+		boot.App.Validator = validators.InitUniversalValidator(boot.App.Locale.Lang)
 	})
 
 	ns := beego.NewNamespace("/v1",
 		beego.NSRouter("/hello", &controllers.HelloController{}),
+		beego.NSRouter("/user", &controllers.UserController{}, "get:GetAll;post:Create"),
+		beego.NSRouter("/user/:id([0-9]+)", &controllers.UserController{}),
 	)
 
 	beego.AddNamespace(ns)

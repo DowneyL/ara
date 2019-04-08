@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
+	"github.com/astaxie/beego/utils"
 	"github.com/beego/i18n"
 	"strings"
 )
@@ -38,6 +39,10 @@ func RegisterLangConf() {
 		beego.Trace("Loading language: " + lang)
 		localePath := GetLangPath(lang, "locale")
 		for _, fileType := range fileTypes {
+			appendFile := GetLangPath(lang, fileType)
+			if !utils.FileExists(appendFile) {
+				continue
+			}
 			appendFiles = append(appendFiles, GetLangPath(lang, fileType))
 		}
 		if err := i18n.SetMessage(lang, localePath, appendFiles...); err != nil {

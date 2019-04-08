@@ -37,3 +37,7 @@ func (r *Responser) Error(err ErrorCode, message string, tr ...bool) Response {
 func (r *Responser) InvalidArgument() Response {
 	return r.Error(PARAMS_ERROR, "params error", true)
 }
+
+func (r *Responser) SystemError() Response {
+	return r.Error(SYSTEM_ERROR, "system error", true)
+}

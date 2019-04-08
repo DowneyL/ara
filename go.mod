@@ -27,6 +27,7 @@ require (
 
 replace (
 	golang.org/x/net v0.0.0-20180724234803-3673e40ba225 => github.com/golang/net v0.0.0-20180724234803-3673e40ba225
+	golang.org/x/net v0.0.0-20180906233101-161cd47e91fd => github.com/golang/net v0.0.0-20180906233101-161cd47e91fd
 	golang.org/x/net v0.0.0-20181114220301-adae6a3d119a => github.com/golang/net v0.0.0-20181114220301-adae6a3d119a
 )
 
@@ -36,4 +37,9 @@ replace google.golang.org/appengine v1.4.0 => github.com/golang/appengine v1.4.0
 
 replace golang.org/x/text v0.3.0 => github.com/golang/text v0.3.0
 
-replace golang.org/x/sys v0.0.0-20190322080309-f49334f85ddc => github.com/golang/sys v0.0.0-20190322080309-f49334f85ddc
+replace (
+	golang.org/x/sys v0.0.0-20180909124046-d0be0721c37e => github.com/golang/sys v0.0.0-20180909124046-d0be0721c37e
+	golang.org/x/sys v0.0.0-20190322080309-f49334f85ddc => github.com/golang/sys v0.0.0-20190322080309-f49334f85ddc
+)
+
+replace golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f => github.com/golang/sync v0.0.0-20180314180146-1d60e4601c6f
